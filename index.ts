@@ -3,26 +3,20 @@ import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
 async function main() {
-  await prisma.user.create({
+  await prisma.country.createMany({
     data: {
-      name: 'Alice',
-      email: 'alice@prisma.io',
-      posts: {
-        create: { title: 'Hello World' },
-      },
-      profile: {
-        create: { bio: 'I like turtles' },
-      },
     },
   })
 
-  const allUsers = await prisma.user.findMany({
+  const allCountries = await prisma.country.findMany({
     include: {
-      posts: true,
-      profile: true,
+      population_id: true,
+      population_name: true
     },
   })
-  console.dir(allUsers, { depth: null })
+  console.dir(allCountries, { depth: null })
+
+  const deleteUsers = await prisma.country.deleteMany({})
 }
 
 main()

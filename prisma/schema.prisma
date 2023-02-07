@@ -11,22 +11,24 @@ datasource db {
 }
 
 model Country {
-  id               Int          @id @default(autoincrement())
-  name             String       @db.VarChar(255) @unique
-  energy_cons      Int
-  energy_cons_cap  Int
-  createdAt        DateTime     @default(now())
-  population_count Int
-  population_id       Population[] @relation("country-id")
-  population_name       Population[] @relation("country-name")
+  id              Int          @id @default(autoincrement())
+  name            String       @unique @db.VarChar(255)
+  year            Int
+  energy_cons     Int
+  energy_cons_cap Int
+  createdAt       DateTime     @default(now())
+  population_id   Population[] @relation("country-id")
+  population_name Population[] @relation("country-name")
 }
 
 model Population {
-  country_id    Int     @unique
+  id            Int     @id @default(autoincrement())
+  country_id    Int
   country_name  String
   population    Int
   pop_per_sqkm  Int
   num_of_houses Int
+  country_year          Int
   country       Country @relation(fields: [country_id], references: [id], name: "country-id")
-  c_name Country @relation(fields: [country_name], references: [name], name: "country-name")
+  c_name        Country @relation(fields: [country_name], references: [name], name: "country-name")
 }
