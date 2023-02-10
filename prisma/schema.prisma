@@ -11,14 +11,22 @@ datasource db {
 }
 
 model Country {
-  id              Int          @id @default(autoincrement())
-  name            String       @unique @db.VarChar(255)
-  year            Int
-  energy_cons     Int
-  energy_cons_cap Int
-  createdAt       DateTime     @default(now())
-  population_id   Population[] @relation("country-id")
-  population_name Population[] @relation("country-name")
+  id          Int          @id @default(autoincrement())
+  name        String       @db.VarChar(255)
+  code        String
+  year        Int
+  energy_cons Float
+  createdAt   DateTime     @default(now())
+  population  Population[]
+  county      County[]
+}
+
+model County {
+  country_id  Int
+  id          Int     @id @default(autoincrement())
+  name        String  @db.VarChar(255)
+  energy_cons Float
+  country     Country @relation(fields: [country_id], references: [id])
 }
 
 model Population {
@@ -28,7 +36,6 @@ model Population {
   population    Int
   pop_per_sqkm  Int
   num_of_houses Int
-  country_year          Int
-  country       Country @relation(fields: [country_id], references: [id], name: "country-id")
-  c_name        Country @relation(fields: [country_name], references: [name], name: "country-name")
+  country_year  Int
+  country       Country @relation(fields: [country_id], references: [id])
 }
