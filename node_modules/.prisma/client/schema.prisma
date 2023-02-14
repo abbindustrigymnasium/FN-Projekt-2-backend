@@ -11,19 +11,25 @@ datasource db {
 }
 
 model Country {
-  id              Int          @id @default(autoincrement())
-  name            String       @db.VarChar(255)
-  code            String
-  year            Int
-  energy_cons     Float
-  createdAt       DateTime     @default(now())
+  id          Int      @id @default(autoincrement())
+  name        String   @db.VarChar(255)
+  code        String
+  year        Int
+  energy_cons Float
+  createdAt   DateTime @default(now())
 }
 
-
 model DevInfo {
-  id       Int      @id @default(autoincrement())
-  name     String   @db.VarChar(255)
+  id       Int    @id @default(autoincrement())
+  name     String @db.VarChar(255)
   age      Int
   duties   String
   ImageURL String
+}
+
+model User {
+  id       Int    @id @default(autoincrement())
+  Username String @unique
+  Password  String 
+  ProfileImageURL String
 }
