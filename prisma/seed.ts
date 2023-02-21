@@ -43,10 +43,10 @@ async function main() {
 
   // <--------------------- Create UserData --------------------------->
 
-  const UserData = await prisma.user.createMany({
-    data: userData
-    })
-    console.log({UserData})
+  // const UserData = await prisma.user.createMany({
+  //   data: userData
+  //   })
+  //   console.log({UserData})
 
   }
 
