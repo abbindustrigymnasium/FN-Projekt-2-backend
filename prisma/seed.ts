@@ -24,29 +24,29 @@ async function main() {
 
   // <------------------- Create CountryData ---------------------->
 
-  // const countryData = await prisma.country.createMany({
-  //   data: CountryData
-  //   })
-  //   console.log({countryData})
+  const countryData = await prisma.country.createMany({
+    data: CountryData
+    })
+    console.log({countryData})
 
 
 
   // <------------------- Create DeveloperData ---------------------->
   
-  // const developerData = await prisma.devInfo.createMany({
-  //   data: DevData
-  // })
+  const developerData = await prisma.devInfo.createMany({
+    data: DevData
+  })
 
-  // console.log(developerData)
+  console.log(developerData)
 
 
 
   // <--------------------- Create UserData --------------------------->
 
-  // const UserData = await prisma.user.createMany({
-  //   data: userData
-  //   })
-  //   console.log({UserData})
+  const UserData = await prisma.user.createMany({
+    data: userData
+    })
+    console.log({UserData})
 
   }
 

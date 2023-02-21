@@ -7,7 +7,7 @@ const prisma = new PrismaClient();
 router.get('/api/country-population', async (req, res) => {
   try {
     const data = await prisma.country.findMany({
-      include: { population: true }
+    
     });
     res.json(data);
   } catch (error) {

@@ -1,15 +1,12 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
-
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
-
 model Country {
   id          Int      @id @default(autoincrement())
   name        String   @db.VarChar(255)
@@ -18,7 +15,6 @@ model Country {
   energy_cons Float
   createdAt   DateTime @default(now())
 }
-
 model DevInfo {
   id       Int    @id @default(autoincrement())
   name     String @db.VarChar(255)
@@ -26,7 +22,6 @@ model DevInfo {
   duties   String
   ImageURL String
 }
-
 model User {
   id       Int    @id @default(autoincrement())
   Username String @unique
