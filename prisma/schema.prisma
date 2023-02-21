@@ -1,41 +1,30 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
-
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
-
 model Country {
-  id          Int          @id @default(autoincrement())
-  name        String       @db.VarChar(255)
+  id          Int      @id @default(autoincrement())
+  name        String   @db.VarChar(255)
   code        String
   year        Int
   energy_cons Float
-  createdAt   DateTime     @default(now())
-  population  Population[]
-  county      County[]
+  createdAt   DateTime @default(now())
 }
-
-model County {
-  country_id  Int
-  id          Int     @id @default(autoincrement())
-  name        String  @db.VarChar(255)
-  energy_cons Float
-  country     Country @relation(fields: [country_id], references: [id])
+model DevInfo {
+  id       Int    @id @default(autoincrement())
+  name     String @db.VarChar(255)
+  age      Int
+  duties   String
+  ImageURL String
 }
-
-model Population {
-  id            Int     @id @default(autoincrement())
-  country_id    Int
-  country_name  String
-  population    Int
-  pop_per_sqkm  Int
-  num_of_houses Int
-  country_year  Int
-  country       Country @relation(fields: [country_id], references: [id])
+model User {
+  id       Int    @id @default(autoincrement())
+  Username String @unique
+  Password  String 
+  ProfileImageURL String
 }
