@@ -8,16 +8,16 @@ const prisma = new PrismaClient()
 
 async function main() {
 
-  // const deleteCountry = await prisma.country.deleteMany({})
-  // console.log({deleteCountry})
+  const deleteCountry = await prisma.country.deleteMany({})
+  console.log({deleteCountry})
 
 
-  // const deleteDevs = await prisma.devInfo.deleteMany({})
-  // console.log({deleteDevs})
+  const deleteDevs = await prisma.devInfo.deleteMany({})
+  console.log({deleteDevs})
 
   
-  // const deleteUsers = await prisma.user.deleteMany({})
-  // console.log({deleteUsers})
+  const deleteUsers = await prisma.user.deleteMany({})
+  console.log({deleteUsers})
 
 
 
